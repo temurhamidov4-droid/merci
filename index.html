@@ -16,7 +16,7 @@
 <style>
 
 /* =========================
-   ОСНОВНЫЕ ЦВЕТА
+   COLORS
 ========================= */
 
 :root{
@@ -32,7 +32,6 @@
     --muted:#a9a094;
 
     --line:rgba(201,164,92,.28);
-    --glass:rgba(255,255,255,.045);
 }
 
 
@@ -52,10 +51,24 @@ html{
 
 body{
     min-height:100vh;
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(201,164,92,.12), transparent 35%),
-        radial-gradient(circle at 0% 50%, rgba(201,164,92,.05), transparent 30%),
-        linear-gradient(145deg,#050504 0%,#0b0907 48%,#15110b 100%);
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(201,164,92,.13),
+            transparent 36%
+        ),
+        radial-gradient(
+            circle at 0% 50%,
+            rgba(201,164,92,.05),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #050504 0%,
+            #0b0907 48%,
+            #15110b 100%
+        );
 
     color:var(--text);
 
@@ -66,11 +79,12 @@ body{
 
 
 /* =========================
-   DECORATIVE BACKGROUND
+   BACKGROUND DECOR
 ========================= */
 
 body::before{
     content:"";
+
     position:fixed;
 
     width:700px;
@@ -106,11 +120,12 @@ body::after{
 
 
 /* =========================
-   PAGE
+   MAIN
 ========================= */
 
 .page{
     width:100%;
+
     max-width:520px;
 
     min-height:100vh;
@@ -124,29 +139,73 @@ body::after{
 
 
 /* =========================
-   TOP LABEL
+   CORNERS
+========================= */
+
+.corner{
+    position:fixed;
+
+    width:85px;
+    height:85px;
+
+    pointer-events:none;
+
+    opacity:.35;
+
+    z-index:0;
+}
+
+.corner-tl{
+    top:0;
+    left:0;
+
+    border-top:1px solid var(--gold);
+    border-left:1px solid var(--gold);
+
+    border-top-left-radius:30px;
+}
+
+.corner-br{
+    bottom:0;
+    right:0;
+
+    border-bottom:1px solid var(--gold);
+    border-right:1px solid var(--gold);
+
+    border-bottom-right-radius:30px;
+}
+
+
+/* =========================
+   TOP BRAND
 ========================= */
 
 .top{
     text-align:center;
+
+    position:relative;
+
+    z-index:2;
 
     animation:fadeDown .8s ease both;
 }
 
 .brand-line{
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     gap:18px;
 
-    margin-bottom:16px;
+    margin-bottom:15px;
 }
 
 .brand-line span{
-    height:1px;
-
     width:58px;
+
+    height:1px;
 
     background:linear-gradient(
         90deg,
@@ -177,21 +236,16 @@ body::after{
     white-space:nowrap;
 }
 
-
-/* =========================
-   SMALL LABEL
-========================= */
-
 .est{
-    color:#8e8478;
+    color:#817970;
 
-    font-size:9px;
+    font-size:8px;
 
     letter-spacing:4px;
 
     text-transform:uppercase;
 
-    margin-bottom:28px;
+    margin-bottom:29px;
 }
 
 
@@ -200,6 +254,10 @@ body::after{
 ========================= */
 
 .hero{
+    position:relative;
+
+    z-index:2;
+
     text-align:center;
 
     animation:fadeUp .9s ease both;
@@ -208,7 +266,7 @@ body::after{
 .eyebrow{
     color:var(--gold);
 
-    font-size:11px;
+    font-size:10px;
 
     letter-spacing:4px;
 
@@ -220,9 +278,9 @@ body::after{
 h1{
     font-family:'Cormorant Garamond',serif;
 
-    font-size:clamp(48px,13vw,76px);
+    font-size:clamp(47px,13vw,76px);
 
-    line-height:.86;
+    line-height:.87;
 
     font-weight:500;
 
@@ -246,9 +304,9 @@ h1{
 }
 
 .description{
-    color:#c4bdb3;
+    color:#bdb5aa;
 
-    font-size:13px;
+    font-size:12px;
 
     line-height:1.7;
 
@@ -269,40 +327,94 @@ h1{
 
     gap:12px;
 
-    padding:11px 17px;
+    padding:10px 17px;
 
-    border:1px solid rgba(201,164,92,.25);
+    border:1px solid rgba(201,164,92,.35);
 
     border-radius:50px;
 
     background:rgba(201,164,92,.055);
 
-    color:#d9d0c3;
+    color:#d8d0c5;
 
-    font-size:11px;
+    font-size:10px;
 
-    letter-spacing:.4px;
+    letter-spacing:.3px;
 
     box-shadow:
-        0 0 35px rgba(201,164,92,.05);
+        0 0 35px rgba(201,164,92,.04);
 }
 
+
+/* =========================
+   NFC ICON
+========================= */
+
 .nfc-icon{
-    width:25px;
-    height:25px;
+    width:28px;
+    height:28px;
 
     border:1px solid var(--gold);
 
-    border-radius:7px;
+    border-radius:8px;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
-    color:var(--gold);
+    position:relative;
 
-    font-size:13px;
+    flex:none;
+}
+
+.nfc-symbol{
+    width:17px;
+    height:18px;
+
+    position:relative;
+}
+
+.nfc-symbol span{
+    position:absolute;
+
+    border-right:1.5px solid var(--gold);
+
+    border-top:1.5px solid transparent;
+
+    border-bottom:1.5px solid transparent;
+
+    border-radius:50%;
+
+    transform:rotate(180deg);
+
+    right:0;
+
+    top:50%;
+
+    transform-origin:center;
+}
+
+.nfc-symbol span:nth-child(1){
+    width:5px;
+    height:6px;
+
+    margin-top:-3px;
+}
+
+.nfc-symbol span:nth-child(2){
+    width:11px;
+    height:12px;
+
+    margin-top:-6px;
+}
+
+.nfc-symbol span:nth-child(3){
+    width:17px;
+    height:18px;
+
+    margin-top:-9px;
 }
 
 
@@ -323,6 +435,8 @@ h1{
     align-items:center;
     justify-content:center;
 
+    z-index:2;
+
     animation:logoAppear 1.2s ease both;
 }
 
@@ -331,7 +445,7 @@ h1{
 
     inset:0;
 
-    border:1px solid rgba(201,164,92,.55);
+    border:1px solid rgba(201,164,92,.52);
 
     border-radius:50%;
 
@@ -369,7 +483,8 @@ h1{
 
     transform:translateX(-50%);
 
-    box-shadow:0 0 14px rgba(201,164,92,.8);
+    box-shadow:
+        0 0 14px rgba(201,164,92,.8);
 }
 
 .logo-circle{
@@ -381,7 +496,7 @@ h1{
     background:
         radial-gradient(
             circle at 35% 30%,
-            rgba(255,255,255,.09),
+            rgba(255,255,255,.08),
             rgba(255,255,255,.015) 45%,
             rgba(0,0,0,.5) 100%
         );
@@ -424,6 +539,10 @@ h1{
     gap:12px;
 
     margin:4px 0 20px;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .divider::before,
@@ -457,22 +576,31 @@ h1{
 
 
 /* =========================
-   MAP BUTTONS
+   SECTION TITLE
 ========================= */
 
 .section-title{
     text-align:center;
 
-    color:#b6aea4;
+    color:#a79e94;
 
-    font-size:10px;
+    font-size:9px;
 
     letter-spacing:3px;
 
     text-transform:uppercase;
 
     margin-bottom:15px;
+
+    position:relative;
+
+    z-index:2;
 }
+
+
+/* =========================
+   MAP BUTTONS
+========================= */
 
 .maps{
     display:flex;
@@ -480,6 +608,10 @@ h1{
     flex-direction:column;
 
     gap:10px;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .map-card{
@@ -555,6 +687,11 @@ h1{
     transform:scale(1.4);
 }
 
+
+/* =========================
+   MAP ICON
+========================= */
+
 .map-icon{
     width:43px;
     height:43px;
@@ -572,7 +709,7 @@ h1{
 
     font-family:'Cormorant Garamond',serif;
 
-    font-size:20px;
+    font-size:19px;
 
     margin-right:14px;
 
@@ -580,6 +717,11 @@ h1{
 
     background:rgba(201,164,92,.04);
 }
+
+
+/* =========================
+   MAP INFO
+========================= */
 
 .map-info{
     flex:1;
@@ -634,6 +776,10 @@ h1{
     line-height:1.6;
 
     max-width:330px;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .review-note strong{
@@ -654,9 +800,13 @@ h1{
 
     justify-content:center;
 
-    gap:14px;
+    gap:12px;
 
     margin-top:5px;
+
+    position:relative;
+
+    z-index:2;
 }
 
 .contact a{
@@ -664,7 +814,7 @@ h1{
 
     text-decoration:none;
 
-    font-size:11px;
+    font-size:10px;
 
     transition:.2s ease;
 }
@@ -676,7 +826,7 @@ h1{
 .contact-separator{
     color:var(--gold-dark);
 
-    font-size:10px;
+    font-size:9px;
 }
 
 
@@ -692,6 +842,10 @@ h1{
     padding-top:18px;
 
     border-top:1px solid rgba(201,164,92,.12);
+
+    position:relative;
+
+    z-index:2;
 }
 
 .thanks{
@@ -718,43 +872,7 @@ h1{
 
 
 /* =========================
-   DECORATIVE CORNERS
-========================= */
-
-.corner{
-    position:fixed;
-
-    width:85px;
-    height:85px;
-
-    pointer-events:none;
-
-    opacity:.35;
-}
-
-.corner-tl{
-    top:0;
-    left:0;
-
-    border-top:1px solid var(--gold);
-    border-left:1px solid var(--gold);
-
-    border-top-left-radius:30px;
-}
-
-.corner-br{
-    bottom:0;
-    right:0;
-
-    border-bottom:1px solid var(--gold);
-    border-right:1px solid var(--gold);
-
-    border-bottom-right-radius:30px;
-}
-
-
-/* =========================
-   ANIMATION
+   ANIMATIONS
 ========================= */
 
 @keyframes fadeDown{
@@ -806,6 +924,7 @@ h1{
 
     .brand{
         font-size:10px;
+
         letter-spacing:5px;
     }
 
@@ -840,6 +959,14 @@ h1{
     .map-text{
         font-size:9px;
     }
+
+    .contact{
+        gap:8px;
+    }
+
+    .contact a{
+        font-size:9px;
+    }
 }
 
 </style>
@@ -854,269 +981,306 @@ h1{
 
 <main class="page">
 
-    <!-- BRAND -->
 
-    <header class="top">
+<!-- =========================
+     BRAND
+========================= -->
 
-        <div class="brand-line">
-            <span></span>
+<header class="top">
 
-            <div class="brand">
-                MERCI HOTEL
+    <div class="brand-line">
+
+        <span></span>
+
+        <div class="brand">
+            MERCI HOTEL
+        </div>
+
+        <span></span>
+
+    </div>
+
+    <div class="est">
+        TASHKENT · UZBEKISTAN
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="eyebrow">
+        YOUR EXPERIENCE MATTERS
+    </div>
+
+    <h1>
+        Приложите телефон
+    </h1>
+
+    <div class="hero-sub">
+        и оставьте отзыв
+    </div>
+
+    <p class="description">
+        Поделитесь впечатлением о вашем пребывании.
+        Выберите удобную карту и оставьте честную оценку.
+    </p>
+
+
+    <!-- NFC -->
+
+    <div class="nfc-pill">
+
+        <div class="nfc-icon">
+
+            <div class="nfc-symbol">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
 
-            <span></span>
         </div>
 
-        <div class="est">
-            TASHKENT · UZBEKISTAN
+        <span>
+            Приложите телефон к NFC
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LOGO
+========================= -->
+
+<div class="logo-wrap">
+
+    <div class="logo-ring"></div>
+
+    <div class="logo-circle">
+
+        <!--
+        ПОЛОЖИ logo.png РЯДОМ С index.html
+        -->
+
+        <img
+            src="logo.png"
+            alt="Merci Hotel Logo"
+        >
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     DIVIDER
+========================= -->
+
+<div class="divider">
+
+    <div class="divider-symbol">
+        ✦
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     MAPS
+========================= -->
+
+<div class="section-title">
+    Выберите платформу
+</div>
+
+
+<div class="maps">
+
+
+<!-- YANDEX -->
+
+<a
+    class="map-card"
+    href="https://yandex.uz/maps/-/CXW64G5P"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+
+    <div class="map-icon">
+        Я
+    </div>
+
+    <div class="map-info">
+
+        <div class="map-name">
+            Яндекс Карты
         </div>
 
-    </header>
-
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="eyebrow">
-            YOUR EXPERIENCE MATTERS
-        </div>
-
-        <h1>
-            Приложите телефон
-        </h1>
-
-        <div class="hero-sub">
+        <div class="map-text">
+            Откройте карточку Merci Hotel
             и оставьте отзыв
         </div>
 
-        <p class="description">
-            Поделитесь впечатлением о вашем пребывании.
-            Выберите удобную карту и оставьте честную оценку.
-        </p>
+    </div>
+
+    <div class="arrow">
+        →
+    </div>
+
+</a>
 
 
-        <!-- NFC -->
 
-        <div class="nfc-pill">
+<!-- 2GIS -->
 
-            <div class="nfc-icon">
-                ))))
-            </div>
+<a
+    class="map-card"
+    href="https://go.2gis.com/CFTOq"
+    target="_blank"
+    rel="noopener noreferrer"
+>
 
-            <span>
-                Приложите телефон к NFC
-            </span>
+    <div class="map-icon">
+        2Г
+    </div>
 
+    <div class="map-info">
+
+        <div class="map-name">
+            2ГИС
         </div>
 
-    </section>
-
-
-    <!-- LOGO -->
-
-    <div class="logo-wrap">
-
-        <div class="logo-ring"></div>
-
-        <div class="logo-circle">
-
-            <!-- ЗАГРУЗИ СЮДА СВОЙ LOGO.PNG -->
-
-            <img
-                src="logo.png"
-                alt="Merci Hotel Logo"
-            >
-
+        <div class="map-text">
+            Перейдите в карточку отеля
+            и поделитесь впечатлением
         </div>
 
     </div>
 
-
-    <!-- DIVIDER -->
-
-    <div class="divider">
-
-        <div class="divider-symbol">✦</div>
-
+    <div class="arrow">
+        →
     </div>
 
+</a>
 
-    <!-- MAPS -->
 
-    <div class="section-title">
-        Выберите платформу
+
+<!-- GOOGLE -->
+
+<a
+    class="map-card"
+    href="https://maps.app.goo.gl/ZWsbWWAgrAct1uBr6"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+
+    <div class="map-icon">
+        G
     </div>
 
+    <div class="map-info">
 
-    <div class="maps">
-
-
-        <!-- YANDEX -->
-
-        <a
-            class="map-card"
-            href="https://yandex.uz/maps/-/CXW64G5P"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            <div class="map-icon">
-                Я
-            </div>
-
-            <div class="map-info">
-
-                <div class="map-name">
-                    Яндекс Карты
-                </div>
-
-                <div class="map-text">
-                    Откройте карточку Merci Hotel
-                    и оставьте отзыв
-                </div>
-
-            </div>
-
-            <div class="arrow">
-                →
-            </div>
-
-        </a>
-
-
-
-        <!-- 2GIS -->
-
-        <a
-            class="map-card"
-            href="https://go.2gis.com/CFTOq"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            <div class="map-icon">
-                2Г
-            </div>
-
-            <div class="map-info">
-
-                <div class="map-name">
-                    2ГИС
-                </div>
-
-                <div class="map-text">
-                    Перейдите в карточку отеля
-                    и поделитесь впечатлением
-                </div>
-
-            </div>
-
-            <div class="arrow">
-                →
-            </div>
-
-        </a>
-
-
-
-        <!-- GOOGLE -->
-
-        <a
-            class="map-card"
-            href="https://maps.app.goo.gl/ZWsbWWAgrAct1uBr6"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            <div class="map-icon">
-                G
-            </div>
-
-            <div class="map-info">
-
-                <div class="map-name">
-                    Google Maps
-                </div>
-
-                <div class="map-text">
-                    Оцените Merci Hotel
-                    в Google
-                </div>
-
-            </div>
-
-            <div class="arrow">
-                →
-            </div>
-
-        </a>
-
-
-    </div>
-
-
-    <!-- NOTE -->
-
-    <div class="review-note">
-
-        <strong>Спасибо за ваш отзыв.</strong><br>
-
-        Ваша оценка помогает другим гостям
-        узнать о Merci Hotel.
-
-    </div>
-
-
-    <!-- CONTACT -->
-
-    <div class="contact">
-
-        <a href="tel:+998770397733">
-            +998 77 039 77 33
-        </a>
-
-        <span class="contact-separator">
-            ·
-        </span>
-
-        <a
-            href="https://t.me/Mercihotel8282"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Telegram
-        </a>
-
-        <span class="contact-separator">
-            ·
-        </span>
-
-        <a
-            href="https://www.instagram.com/merci_hotel.uz/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Instagram
-        </a>
-
-    </div>
-
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        <div class="thanks">
-            Merci
+        <div class="map-name">
+            Google Maps
         </div>
 
-        <div class="footer-small">
-            Thank you for staying with us
+        <div class="map-text">
+            Оцените Merci Hotel
+            в Google
         </div>
 
-    </footer>
+    </div>
+
+    <div class="arrow">
+        →
+    </div>
+
+</a>
+
+
+</div>
+
+
+
+<!-- =========================
+     THANK YOU
+========================= -->
+
+<div class="review-note">
+
+    <strong>Спасибо за ваш отзыв.</strong>
+    <br>
+
+    Ваша оценка помогает другим гостям
+    узнать о Merci Hotel.
+
+</div>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<div class="contact">
+
+    <a href="tel:+998770397733">
+        +998 77 039 77 33
+    </a>
+
+    <span class="contact-separator">
+        ·
+    </span>
+
+    <a
+        href="https://t.me/Mercihotel8282"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Telegram
+    </a>
+
+    <span class="contact-separator">
+        ·
+    </span>
+
+    <a
+        href="https://www.instagram.com/merci_hotel.uz/"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Instagram
+    </a>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="thanks">
+        Merci
+    </div>
+
+    <div class="footer-small">
+        Thank you for staying with us
+    </div>
+
+</footer>
+
 
 </main>
 
